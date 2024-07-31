@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Rocket, Zap, Shield, ArrowRight } from "lucide-react"
+import { Rocket, Zap, Shield, ArrowRight, Check } from "lucide-react"
 import Navbar from '@/components/Navbar'
 import { TestimonialCarousel } from '@/components/TestimonialCarousel'
+import Footer from '@/components/Footer'
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -62,7 +63,45 @@ const Index = () => {
           <h2 className="text-3xl font-bold text-white text-center mb-8">What Our Customers Say</h2>
           <TestimonialCarousel />
         </div>
+
+        {/* Pricing Section */}
+        <div className="my-16">
+          <h2 className="text-3xl font-bold text-white text-center mb-8">Choose Your Plan</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <PricingCard
+              title="Basic"
+              price="$9.99"
+              features={[
+                "Up to 5 users",
+                "Basic analytics",
+                "24/7 support"
+              ]}
+            />
+            <PricingCard
+              title="Pro"
+              price="$29.99"
+              features={[
+                "Up to 20 users",
+                "Advanced analytics",
+                "Priority support",
+                "Custom integrations"
+              ]}
+              highlighted={true}
+            />
+            <PricingCard
+              title="Enterprise"
+              price="Custom"
+              features={[
+                "Unlimited users",
+                "Full analytics suite",
+                "Dedicated account manager",
+                "Custom development"
+              ]}
+            />
+          </div>
+        </div>
       </div>
+      <Footer />
     </div>
   );
 };
@@ -72,6 +111,24 @@ const FeatureCard = ({ icon, title, description }) => (
     <div className="mb-4">{icon}</div>
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
     <p>{description}</p>
+  </div>
+);
+
+const PricingCard = ({ title, price, features, highlighted = false }) => (
+  <div className={`bg-white rounded-lg shadow-xl p-6 ${highlighted ? 'border-4 border-yellow-400' : ''}`}>
+    <h3 className="text-2xl font-bold text-gray-800 mb-4">{title}</h3>
+    <p className="text-4xl font-bold text-purple-600 mb-6">{price}<span className="text-sm font-normal text-gray-600">/month</span></p>
+    <ul className="mb-6">
+      {features.map((feature, index) => (
+        <li key={index} className="flex items-center mb-2">
+          <Check className="h-5 w-5 text-green-500 mr-2" />
+          <span className="text-gray-600">{feature}</span>
+        </li>
+      ))}
+    </ul>
+    <Button className={`w-full ${highlighted ? 'bg-purple-600 hover:bg-purple-700' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}>
+      Choose Plan
+    </Button>
   </div>
 );
 
