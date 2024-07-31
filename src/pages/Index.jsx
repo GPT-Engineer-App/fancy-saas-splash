@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Rocket, Zap, Shield, ArrowRight } from "lucide-react"
+import Navbar from '@/components/Navbar'
 
 const Index = () => {
   const [email, setEmail] = useState('');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
-      <div className="container mx-auto px-4 py-16">
+      <Navbar />
+      <div className="container mx-auto px-4 pt-24 pb-16">
         {/* Hero Section */}
         <div className="text-center text-white mb-16">
           <h1 className="text-5xl font-bold mb-4">Welcome to CloudBoost</h1>
