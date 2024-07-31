@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const Navbar = () => {
   return (
-    <nav className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg fixed w-full z-10">
+    <nav className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg sticky top-0 w-full z-10">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="text-white font-bold text-xl">CloudBoost</div>
         <div className="flex items-center space-x-4">
