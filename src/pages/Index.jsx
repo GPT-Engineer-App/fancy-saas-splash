@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Rocket, Zap, Shield, ArrowRight, Check } from "lucide-react"
@@ -14,11 +15,36 @@ const Index = () => {
       <Navbar />
       <div className="container mx-auto px-4 pt-24 pb-16">
         {/* Hero Section */}
-        <div className="text-center text-white mb-16">
-          <h1 className="text-5xl font-bold mb-4">Welcome to CloudBoost</h1>
-          <p className="text-xl mb-8">Supercharge your business with our cutting-edge SaaS solution</p>
-          <Button className="bg-white text-purple-600 hover:bg-purple-100">Get Started</Button>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center text-white mb-16"
+        >
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-5xl font-bold mb-4"
+          >
+            Welcome to CloudBoost
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-xl mb-8"
+          >
+            Supercharge your business with our cutting-edge SaaS solution
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
+            <Button className="bg-white text-purple-600 hover:bg-purple-100">Get Started</Button>
+          </motion.div>
+        </motion.div>
 
         {/* Features Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
@@ -40,10 +66,34 @@ const Index = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-white rounded-lg shadow-xl p-8 max-w-2xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Ready to boost your productivity?</h2>
-          <p className="text-gray-600 mb-6">Sign up for our newsletter and get exclusive early access!</p>
-          <div className="flex space-x-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white rounded-lg shadow-xl p-8 max-w-2xl mx-auto"
+        >
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-3xl font-bold text-gray-800 mb-4"
+          >
+            Ready to boost your productivity?
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-gray-600 mb-6"
+          >
+            Sign up for our newsletter and get exclusive early access!
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex space-x-4"
+          >
             <Input
               type="email"
               placeholder="Enter your email"
@@ -55,8 +105,8 @@ const Index = () => {
               Subscribe
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Testimonial Section */}
         <div className="my-16">
@@ -107,29 +157,59 @@ const Index = () => {
 };
 
 const FeatureCard = ({ icon, title, description }) => (
-  <div className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 text-white">
-    <div className="mb-4">{icon}</div>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    whileHover={{ scale: 1.05 }}
+    className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg rounded-lg p-6 text-white"
+  >
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 0.2, type: "spring", stiffness: 260, damping: 20 }}
+      className="mb-4"
+    >
+      {icon}
+    </motion.div>
     <h3 className="text-xl font-semibold mb-2">{title}</h3>
     <p>{description}</p>
-  </div>
+  </motion.div>
 );
 
 const PricingCard = ({ title, price, features, highlighted = false }) => (
-  <div className={`bg-white rounded-lg shadow-xl p-6 ${highlighted ? 'border-4 border-yellow-400' : ''}`}>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5 }}
+    whileHover={{ scale: 1.05 }}
+    className={`bg-white rounded-lg shadow-xl p-6 ${highlighted ? 'border-4 border-yellow-400' : ''}`}
+  >
     <h3 className="text-2xl font-bold text-gray-800 mb-4">{title}</h3>
     <p className="text-4xl font-bold text-purple-600 mb-6">{price}<span className="text-sm font-normal text-gray-600">/month</span></p>
     <ul className="mb-6">
       {features.map((feature, index) => (
-        <li key={index} className="flex items-center mb-2">
+        <motion.li
+          key={index}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: index * 0.1 }}
+          className="flex items-center mb-2"
+        >
           <Check className="h-5 w-5 text-green-500 mr-2" />
           <span className="text-gray-600">{feature}</span>
-        </li>
+        </motion.li>
       ))}
     </ul>
-    <Button className={`w-full ${highlighted ? 'bg-purple-600 hover:bg-purple-700' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}>
-      Choose Plan
-    </Button>
-  </div>
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <Button className={`w-full ${highlighted ? 'bg-purple-600 hover:bg-purple-700' : 'bg-gray-200 text-gray-800 hover:bg-gray-300'}`}>
+        Choose Plan
+      </Button>
+    </motion.div>
+  </motion.div>
 );
 
 export default Index;
