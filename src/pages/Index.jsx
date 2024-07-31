@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Rocket, Zap, Shield, ArrowRight } from "lucide-react"
 import Navbar from '@/components/Navbar'
+import { TestimonialCarousel } from '@/components/TestimonialCarousel'
 
 const Index = () => {
   const [email, setEmail] = useState('');
@@ -54,6 +55,12 @@ const Index = () => {
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
+        </div>
+
+        {/* Testimonial Section */}
+        <div className="my-16">
+          <h2 className="text-3xl font-bold text-white text-center mb-8">What Our Customers Say</h2>
+          <TestimonialCarousel />
         </div>
       </div>
     </div>
